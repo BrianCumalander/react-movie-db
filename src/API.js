@@ -18,9 +18,10 @@ const defaultConfig = {
 const apiSettings = {
   fetchMovies: async (searchTerm, page) => {
     const endpoint = searchTerm
+    // if true, will call the ?, but if false, will return the :
       ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
       : `${POPULAR_BASE_URL}&page=${page}`;
-    return await (await fetch(endpoint)).json();
+    return await (await fetch(endpoint)).json(); // 2 awaits: the first waits for the endpoint, then the second waits for the conversion to .json to complete
   },
   fetchMovie: async movieId => {
     const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
