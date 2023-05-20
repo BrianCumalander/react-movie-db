@@ -22,30 +22,30 @@ const Home = () => {
     // we don't want <div>'s, so we'll put what's called a fragment, then the HeroImage.
     // you can either use the && which is a 'short circuit', which if true, shows the HeroIimage, otherwise it returns the word 'false', but will NOT be shown since its jsx. Some people don't like the && because it does return 'false' even though its not shown.
     // or, you can use the turnurary opperator which I'm more familure with. if true, displays the image, but if false, is null and won't display the non-existent image or the word null.
-    return (
-        <>
-        {state.results[0] &&
-        <HeroImage />
-        }
-        </>
-    )
-    console.log(state);
-    // or
-    // --for these results we will display some props, defined in ./config.js and using the movies api. Or, you can also look at the state.results json and see all of the returned data to pull from.
     // return (
     //     <>
-    //         {
-    //             state.results[0] ?
-    //                 <HeroImage
-    //                     image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
-    //                     title={state.results[0].original_title}
-    //                     text={state.results[0].overview}
-    //                 />
-    //                 : null
-    //         }
-
+    //     {state.results[0] &&
+    //     <HeroImage />
+    //     }
     //     </>
     // )
+    // console.log(state);
+    // or
+    // --for these results we will display some props, defined in ./config.js and using the movies api. Or, you can also look at the state.results json and see all of the returned data to pull from.
+    return (
+        <>
+            {
+                state.results[0] ?
+                    <HeroImage
+                        image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
+                        title={state.results[0].original_title}
+                        text={state.results[0].overview}
+                    />
+                    : null
+            }
+
+        </>
+    )
 }
 
 export default Home;
