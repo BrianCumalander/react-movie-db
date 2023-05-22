@@ -49,6 +49,7 @@ const Home = () => {
             <Grid header = 'Popular Movies'>
                 {state.results.map(movie => (
                     <div key={movie.id}>{movie.title}</div>
+                    //grabs movie.id from the API
                 ))}
             </Grid>
         </>
