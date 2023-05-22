@@ -7,9 +7,8 @@ import React, { useState, useEffect } from 'react';
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config';
 // Components
 import HeroImage from './HeroImage';
-
-// Grid
 import Grid from './Grid';
+import Thumb from './Thumb';
 
 // Hook
 import { useHomeFetch } from '../hooks/useHomeFetch';
@@ -48,8 +47,21 @@ const Home = () => {
             }
             <Grid header = 'Popular Movies'>
                 {state.results.map(movie => (
-                    <div key={movie.id}>{movie.title}</div>
-                    //grabs movie.id from the API
+                    //grabs movie.id from the API, returns the title text
+                    // <div key={movie.id}>{movie.title}</div>
+                    // returning the Thumbnail instead, this is after we've created our Thumb component
+                    <Thumb
+                        key={movie.id}
+                        clickable
+                        image={
+                            //if poster path exists, display img. Otherwise display the 'NoImage' image.
+                            // Here, I've used the same method to return the backdrop image as in the state.result[0] above, but you can alternatively use the old way to disp. images--  //IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                            movie.poster_path
+                            ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                            : NoImage
+                        }
+                        movieId ={movie.id}
+                        />
                 ))}
             </Grid>
         </>
