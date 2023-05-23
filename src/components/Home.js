@@ -9,6 +9,7 @@ import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config';
 import HeroImage from './HeroImage';
 import Grid from './Grid';
 import Thumb from './Thumb';
+import Spinner from './Spinner';
 
 // Hook
 import { useHomeFetch } from '../hooks/useHomeFetch';
@@ -45,7 +46,7 @@ const Home = () => {
                     />
                     : null
             }
-            <Grid header = 'Popular Movies'>
+            <Grid header='Popular Movies'>
                 {state.results.map(movie => (
                     //grabs movie.id from the API, returns the title text
                     // <div key={movie.id}>{movie.title}</div>
@@ -57,13 +58,14 @@ const Home = () => {
                             //if poster path exists, display img. Otherwise display the 'NoImage' image.
                             // Here, I've used the same method to return the backdrop image as in the state.result[0] above, but you can alternatively use the old way to disp. images--  //IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
                             movie.poster_path
-                            ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
-                            : NoImage
+                                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+                                : NoImage
                         }
-                        movieId ={movie.id}
-                        />
+                        movieId={movie.id}
+                    />
                 ))}
             </Grid>
+            <Spinner />
         </>
     );
 };
