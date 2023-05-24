@@ -9,10 +9,17 @@ import { Wrapper, Content } from "./SearchBar.styles";
 const SearchBar = ({ setSearchTerm }) => {
     //create a controlled component
     const [state, setState] = useState('');
+    const initial = useRef(true) // prevents from running on initial load
 
     //add a delay for the input search to wait a moment before searching. Creates a better user experience
     //2:53:17
     useEffect(() => {
+        //useRef won't trigger a re-render, but setState will trigger a re-render. That's why here we are asking for a useRef
+        if (initial.current) {
+            initial.current = false;
+            return;
+        }
+        
         const timer = setTimeout(() => {
             setSearchTerm(state);
         }, 500)
