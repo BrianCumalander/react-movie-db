@@ -19,7 +19,7 @@ import { useHomeFetch } from '../hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg'; //image can be named anything when importing like this. Here, we've named it NoImage. Also, be sure to include the file extension when importing like this.
 
 const Home = () => {
-    const { state, loading, error } = useHomeFetch();
+    const { state, loading, error, setSearchTerm } = useHomeFetch();
 
     console.log(state)
 
@@ -47,7 +47,7 @@ const Home = () => {
                     />
                     ) : null
             }
-            <SearchBar />
+            <SearchBar setSearchTerm={setSearchTerm} />
             <Grid header='Popular Movies'>
 
                 {state.results.map(movie => (

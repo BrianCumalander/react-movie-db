@@ -17,10 +17,14 @@ const initialState = { //always a good idea to set initial states for the page. 
 //exporting this file since we're going to import it into our home file.
 
 export const useHomeFetch = () => {
+    const [searchTerm, setSearchTerm] = useState('');
     //we'll use state, 'useState', defined on line 5. Returns an array containing 1:the state itself, and 2:the setter for the state. Basically, [something, setSomething]
     const [state, setState] = useState(initialState); //the array names can be anything, but lets keep it simple. useState(can-define-an-initial-state-if-we-want)
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+
+    console.log(searchTerm)
+    
     // creating our new function for the react useEffect
     const fetchMovies = async (page, searchTerm = "") => { // 2 params, set searchTerm to an empty string
         try {
@@ -33,7 +37,7 @@ export const useHomeFetch = () => {
             setState(prev => ({
                 ...movies, //we'll spread the movies here. Also, we'll append rather than wiping out the old data.
                 results: //below we will list the old movie results "prev.results", then we'll append the new results "movies.results"
-                    page > 1 ? [...prev.results, ...movies.results ] : [...movies.results]//if "page" is greater than 1, turnary opperator, run the array, first list old results, then append new results. BUT, if this is false, wipe out any results and only list the new results.
+                    page > 1 ? [...prev.results, ...movies.results] : [...movies.results]//if "page" is greater than 1, turnary opperator, run the array, first list old results, then append new results. BUT, if this is false, wipe out any results and only list the new results.
                 //cant test this until we create a "loading" button.
             }))
             //after the loading is finished, we need to set it back to false. we'll do that at the end of this catch block.
@@ -49,5 +53,5 @@ export const useHomeFetch = () => {
     }, []) //dependancy array. an empty array will make it only run once.
     // you can check the browser's console to see the object is now avalible. One page returned.
 
-    return { state, loading, error }; //We don't have to specify "state:", it will figure that one out by itself.
+    return { state, loading, error, setSearchTerm }; //We don't have to specify "state:", it will figure that one out by itself.
 };
