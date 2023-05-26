@@ -19,7 +19,7 @@ import { useHomeFetch } from '../hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg'; //image can be named anything when importing like this. Here, we've named it NoImage. Also, be sure to include the file extension when importing like this.
 
 const Home = () => {
-    const { state, loading, error, setSearchTerm } = useHomeFetch();
+    const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
 
     console.log(state)
 
@@ -38,8 +38,7 @@ const Home = () => {
     // --for these results we will display some props, defined in ./config.js and using the movies api. Or, you can also look at the state.results json and see all of the returned data to pull from.
     return (
         <>
-            {
-                state.results[0] ? (
+            {!searchTerm && state.results[0] ? (
                     <HeroImage
                         image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
                         title={state.results[0].original_title}
@@ -48,7 +47,7 @@ const Home = () => {
                     ) : null
             }
             <SearchBar setSearchTerm={setSearchTerm} />
-            <Grid header='Popular Movies'>
+            <Grid header={searchTerm ? 'Search Result' : 'Popular Movies'}>
 
                 {state.results.map(movie => (
                     //grabs movie.id from the API, returns the title text

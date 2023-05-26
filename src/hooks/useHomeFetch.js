@@ -54,5 +54,5 @@ export const useHomeFetch = () => {
     }, [searchTerm]); //dependancy array. An empty array will make it only run once. It will also run whenever the dependancy changes. So, once on mount and once on change.
     // you can check the browser's console to see the object is now avalible. One page returned.
 
-    return { state, loading, error, setSearchTerm }; //We don't have to specify "state:", it will figure that one out by itself.
+    return { state, loading, error, searchTerm, setSearchTerm }; //We don't have to specify "state:", it will figure that one out by itself.
 };
