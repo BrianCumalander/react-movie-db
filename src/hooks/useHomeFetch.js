@@ -47,10 +47,11 @@ export const useHomeFetch = () => {
         setLoading(false);
     }
 
-    // Initial render
+    // Initial and Search Logic
     useEffect(() => { //inline func. We want it to run on the initial run of this file.
-        fetchMovies(1) //fetch the first page
-    }, []) //dependancy array. an empty array will make it only run once.
+        setState(initialState); // will wipe out the state each time the section is ran.
+        fetchMovies(1, searchTerm); //fetch the first page, and the searchTerm
+    }, [searchTerm]); //dependancy array. An empty array will make it only run once. It will also run whenever the dependancy changes. So, once on mount and once on change.
     // you can check the browser's console to see the object is now avalible. One page returned.
 
     return { state, loading, error, setSearchTerm }; //We don't have to specify "state:", it will figure that one out by itself.
