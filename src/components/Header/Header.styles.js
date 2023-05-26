@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    background: var(--medGrey); //color defined in GlobalStyle.js, if you wanna change it
+    background: var(--darkGrey); //color defined in GlobalStyle.js, if you wanna change it
     padding: 0 20px;
 `;
 

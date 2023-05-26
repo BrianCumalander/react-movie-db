@@ -1,23 +1,23 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    display: flex; //centers div on all sides   
-    align-items: center; //no change
-    height: 100%; //no change
+    display: flex;    
+    align-items: center;
+    height: 100%; 
     background: var(--darkGrey); 
-    padding: 0 20px; //no change
+    padding: 0 20px; 
 `;
 
 export const Content = styled.div`
-   //setting to relative b/c we want to set the icon to absolute position
     position: relative;
     max-width: var(--maxWidth);
-    width: 100%; //left justified
-    height: 55px; //squashed the image and text box
+    width: 100%; 
+    height: 55px; 
     background: var(--medGrey);
-    margin: 0 auto;
+    margin: 20px auto;
     border-radius: 40px;
     color: var(--white);
+    
 
     img {
         position: absolute;
@@ -30,7 +30,7 @@ export const Content = styled.div`
         font-size: 28px;
         position: absolute;
         left: 0;
-        margin: 8px 0;
+        margin: 8px 0px;
         padding: 0 0 0 60px;
         border: 0;
         width: 95%;
@@ -40,10 +40,6 @@ export const Content = styled.div`
 
         :focus {
             outline: none;
-        }
-
-        @media screen and (max-width: 720px){
-            font-size: 28px;
         }
     }
 `;
