@@ -35,6 +35,7 @@ const SearchBar = ({ setSearchTerm }) => {
                     placeholder="Search Movie"
                     onChange={event => setState(event.currentTarget.value)}
                     value={state}
+                    id='movie_search'
                 />
             </Content>
         </Wrapper>
