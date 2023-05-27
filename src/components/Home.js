@@ -11,6 +11,7 @@ import Grid from './Grid';
 import Thumb from './Thumb';
 import Spinner from './Spinner';
 import SearchBar from './SearchBar';
+import Button from './Button';
 
 // Hook
 import { useHomeFetch } from '../hooks/useHomeFetch';
@@ -19,9 +20,18 @@ import { useHomeFetch } from '../hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg'; //image can be named anything when importing like this. Here, we've named it NoImage. Also, be sure to include the file extension when importing like this.
 
 const Home = () => {
-    const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
+    const {
+        state,
+        loading,
+        error,
+        searchTerm,
+        setSearchTerm,
+        setIsLoadingMore
+    } = useHomeFetch();
 
     console.log(state)
+
+    if (error) return <div>Something went wrong...</div>;
 
     // we don't want <div>'s, so we'll put what's called a fragment, then the HeroImage.
     // you can either use the && which is a 'short circuit', which if true, shows the HeroIimage, otherwise it returns the word 'false', but will NOT be shown since its jsx. Some people don't like the && because it does return 'false' even though its not shown.
@@ -36,16 +46,19 @@ const Home = () => {
     // console.log(state);
     // or
     // --for these results we will display some props, defined in ./config.js and using the movies api. Or, you can also look at the state.results json and see all of the returned data to pull from.
+
+    // **<Grid header (below) uses a Turnary opperator. --If there is a searchTerm, display 'Search Result'. If not, display 'Popular Movies'. --This controls the title on the Grid Thumbnail page. -Very slick and nifty! 
     return (
         <>
             {!searchTerm && state.results[0] ? (
-                    <HeroImage
-                        image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
-                        title={state.results[0].original_title}
-                        text={state.results[0].overview}
-                    />
-                    ) : null
+                <HeroImage
+                    image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
+                    title={state.results[0].original_title}
+                    text={state.results[0].overview}
+                />
+            ) : null
             }
+
             <SearchBar setSearchTerm={setSearchTerm} />
             <Grid header={searchTerm ? 'Search Result' : 'Popular Movies'}>
 
@@ -67,9 +80,14 @@ const Home = () => {
                     />
                 ))}
             </Grid>
-            <Spinner />
+            {loading && <Spinner />}
+            {state.page < state.total_pages && !loading && (
+                <Button text='Load More' callback={()=> setIsLoadingMore(true)} />
+            )}
         </>
     );
 };
+// above, if the state.pages is less than the total pages, we can display the Load More button. And also it will check that we're not loading anything because if we're loading something, we want to show the spinner instead.
+// line 74 will show the spinner if loading is set to true. If set to false, will Not display the spinner.
 
 export default Home;

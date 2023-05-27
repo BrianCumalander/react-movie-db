@@ -22,9 +22,8 @@ export const useHomeFetch = () => {
     const [state, setState] = useState(initialState); //the array names can be anything, but lets keep it simple. useState(can-define-an-initial-state-if-we-want)
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-    console.log(searchTerm)
-    
     // creating our new function for the react useEffect
     const fetchMovies = async (page, searchTerm = "") => { // 2 params, set searchTerm to an empty string
         try {
@@ -47,12 +46,21 @@ export const useHomeFetch = () => {
         setLoading(false);
     }
 
-    // Initial and Search Logic
+    // Search
     useEffect(() => { //inline func. We want it to run on the initial run of this file.
         setState(initialState); // will wipe out the state each time the section is ran.
         fetchMovies(1, searchTerm); //fetch the first page, and the searchTerm
     }, [searchTerm]); //dependancy array. An empty array will make it only run once. It will also run whenever the dependancy changes. So, once on mount and once on change.
     // you can check the browser's console to see the object is now avalible. One page returned.
 
-    return { state, loading, error, searchTerm, setSearchTerm }; //We don't have to specify "state:", it will figure that one out by itself.
+    // Load More button
+    useEffect(() => {
+        if (!isLoadingMore) return; //if its NOT loading more, simply return nothing.
+
+        fetchMovies(state.page + 1, searchTerm); //fetch the movies, using state.page, plus the next page. Also pass it the searchTerm so it knows what it's looking for. ALSO, the dependancy array will complain, saying that it needs a few more dependancies, searchTerm & state.page. Go ahead and include them as well.
+        setIsLoadingMore(false); //otherwise continue on and perform this, set isLoadingMore to false
+    }, [isLoadingMore, searchTerm, state.page]); //dependency array
+
+
+    return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore }; //We don't have to specify "state:", it will figure that one out by itself.
 };

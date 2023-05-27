@@ -8,10 +8,10 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
     :root {
         --maxWidth: 1280px;
-        --white: #ffffff;
+        --white: #fff;
         --lightGrey: #eee;
-        --medGrey: #848484;
-        --darkGrey: #383838;
+        --medGrey: #363536;
+        --darkGrey: #1d1b1d;
         --fontSuperBig: 2.5rem;
         --fontBig: 1.5rem;
         --fontMed: 1.2rem;
