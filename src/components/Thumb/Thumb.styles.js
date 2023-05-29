@@ -22,5 +22,4 @@ export const Image = styled.img`
             opacity: 1;
         }
     }
-
 `;
