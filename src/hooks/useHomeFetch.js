@@ -1,11 +1,8 @@
-/* This file wasn't working with all of my notes, so I duplicated the file and made one file the one with notes and one with minimal notes.
-*/
-
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from 'react';
 // API
 import API from '../API';
 
-const initialState = { 
+const initialState = {
     page: 0,
     results: [],
     total_pages: 0,
@@ -14,54 +11,47 @@ const initialState = {
 
 export const useHomeFetch = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [state, setState] = useState(initialState); 
+    const [state, setState] = useState(initialState);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-    // creating our new function for the react useEffect
-    const fetchMovies = async (page, searchTerm = '') => { 
+    const fetchMovies = async (page, searchTerm = '') => {
         try {
             setError(false);
             setLoading(true);
 
-            const movies = await API.fetchMovies(searchTerm, page); 
-            
+            const movies = await API.fetchMovies(searchTerm, page);
+
             setState(prev => ({
-                ...movies, 
-                    results: 
+                ...movies,
+                results:
                     page > 1 ? [...prev.results, ...movies.results] : [...movies.results]
-            }))
-            
+            }));
         } catch (error) {
             setError(true);
         }
         setLoading(false);
-    }
+    };
 
-    // // Search
-    // useEffect(() => { 
-    //     setState(initialState); 
-    //     fetchMovies(1, searchTerm); 
-    // }, [searchTerm]); 
+    // Initial render
+    useEffect(() => {
+        fetchMovies(1);
+    }, []);
 
     // Search
-    useEffect(() => { 
-        setState(initialState); 
-        fetchMovies(1, searchTerm); 
-        if (!isLoadingMore) return; 
-        fetchMovies(state.page + 1, searchTerm); 
-        setIsLoadingMore(false); 
-    }, [isLoadingMore, searchTerm, state.page]); 
+    useEffect(() => {
+        setState(initialState);
+        fetchMovies(1, searchTerm);
+    }, [searchTerm]);
 
-    // Load More button
-    // useEffect(() => {
-    //     if (!isLoadingMore) return; 
+    // Load More
+    useEffect(() => {
+        if (!isLoadingMore) return;
 
-    //     fetchMovies(state.page + 1, searchTerm); 
-    //         setIsLoadingMore(false); 
-    // }, [isLoadingMore, searchTerm, state.page]); 
+        fetchMovies(state.page + 1, searchTerm);
+        setIsLoadingMore(false);
+    }, [isLoadingMore, searchTerm, state.page]);
 
-
-    return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore }; 
+    return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore };
 };
