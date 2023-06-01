@@ -23,10 +23,41 @@ export const Wrapper = styled.div`
 
 
 export const Content = styled.div`
+    display: flex;
+    max-width: var(--maxWidth);
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
 
-
-
+@media screen and (max-width: 768px) {
+    display: block;
+    max-height: none;
+}
 `;
 
 
-export const Text = styled.div``;
+export const Text = styled.div`
+    width: 100%;
+    padding: 20px 40px; //set padding around entire text block
+    color: var(--white);
+    overflow: hidden;
+
+    .rating-director {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .score {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background: #fff;
+        color: var(--white);
+        font-weight: 800;
+        border-radius: 25px;
+        margin: 0;
+    }
+
+`;

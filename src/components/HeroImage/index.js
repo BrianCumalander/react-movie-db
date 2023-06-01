@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Wrapper, Content, Text } from './HeroImage.styles';
 
-//currently assuming props comes directly from the api, which is returning the url to the actual content.
+// props come directly from the api, which is returning the url to the actual content.
 const HeroImage = ({ image, title, text }) => (
     <Wrapper image={image}>
         <Content>
