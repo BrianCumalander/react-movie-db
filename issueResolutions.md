@@ -9,3 +9,22 @@ I browsed my last commit and found that I had added the comment in my HeroImage.
 Boom!!
 There it was! -The HeroImage image was showing again. 
 So happy to see it. Learned my lesson, really need to be careful where I put my comments in the code and then test the code one last time before committing and walking away from my desk Lol.
+
+######
+
+My original code was to display a movie vote average in MovieInfo, which gave me 0.00, but it was too
+big for the circle that I was putting it in. 
+I googled, js two to one decimal
+
+Grepper returned some great results. Take this example:
+(3.141596).toFixed(2);	// 3.14
+
+My original code which was returning 7.75:
+   <div className="score">{movie.vote_average}</div>
+
+//My fix, returns 7.8, which fit inside of my css circle:
+   <div className="score">{(movie.vote_average).toFixed(1)}</div>
+
+######
+
+

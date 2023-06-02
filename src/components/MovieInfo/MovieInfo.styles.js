@@ -40,24 +40,41 @@ export const Text = styled.div`
     width: 100%;
     padding: 20px 40px; //set padding around entire text block
     color: var(--white);
-    overflow: hidden;
+    overflow: hidden; 
 
     .rating-director {
-        display: flex;
+        display: flex; */
         justify-content: flex-start;
     }
 
     .score {
+        /* these next 3 lines center the items */
         display: flex;
         align-items: center;
         justify-content: center;
+        /* here, we will make a circle, first set the size, then background and color, then font weight, then circle & margin */
         width: 35px;
         height: 35px;
         background: #fff;
-        color: var(--white);
+        color: #000;
         font-weight: 800;
+        /* can be 25px or 50%, does the same thing, makes the circle */
         border-radius: 25px;
         margin: 0;
     }
 
+    .director {
+        /* set margin to 0, then 40px left */
+        margin: 0 0 0 40px;
+
+        p{
+            margin: 0%;
+        }
+    }
+
+    h1 {
+        @media screen and (maxWidth: 768px) {
+            font-size: var(--fontBig);
+        }
+    }
 `;
