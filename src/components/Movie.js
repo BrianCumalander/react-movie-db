@@ -10,8 +10,12 @@ import Grid from './Grid';
 import Spinner from './Spinner';
 import MovieInfo from './MovieInfo';
 import MovieInfoBar from './MovieInfoBar/MovieInfoBar';
+import Actor from './Actor';
+
+
 // Hook
 import { useMovieFetch } from '../hooks/useMovieFetch';
+
 // Images
 import NoImage from '../images/no_image.jpg';
 
@@ -22,7 +26,7 @@ const Movie = () => {
     const { state: movie, loading, error } = useMovieFetch(movieId);
 
     if (loading) return <Spinner />;
-    if (error) return <div>Something went wrong.</div>;
+    if (error) return <div>Something went wrong...</div>;
 
     //MovieInfo--we pass it the 'movie' and the complete {movie} state.
     return (
@@ -34,6 +38,20 @@ const Movie = () => {
                 budget={movie.budget}
                 revenue={movie.revenue}
             />
+            <Grid header='Actors'>
+                {movie.actors.map(actor => (
+                    <Actor
+                        key={actor.credit_id}
+                        name={actor.name}
+                        character={actor.character}
+                        imageUrl={
+                            actor.profile_path
+                                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
+                                : NoImage
+                        }
+                    />
+                ))}
+            </Grid>
         </>
     );
 };
