@@ -1,5 +1,5 @@
 /* We're not creating an individual folder for this, instead we'll apply
- styliing to the actual component instead.
+ styling to the actual component instead.
  */
 
 import React from 'react';

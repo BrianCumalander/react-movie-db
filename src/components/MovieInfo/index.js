@@ -8,6 +8,7 @@ import NoImage from '../../images/no_image.jpg';
 // Styles
 import { Wrapper, Content, Text } from "./MovieInfo.styles";
 
+
 //passing in the movie data, then creating an implicit return
 //Wrapper has a prop of backdrop, then we give it the movie.path for whatever movie this index.js will be used for.
 const MovieInfo = ({ movie }) => (
@@ -27,10 +28,9 @@ const MovieInfo = ({ movie }) => (
                 <h3>PLOT</h3>
                 <p>{movie.overview}</p>
 
-                <div className="ratiing-directors">
+                <div className="rating-directors">
                     <div>
                         <h3>RATING</h3>
-                        {/* <div className="score">{movie.vote_average}</div> */}
                         <div className="score">{(movie.vote_average).toFixed(1)}</div>
                     </div>
                     <div className="director">
@@ -42,6 +42,7 @@ const MovieInfo = ({ movie }) => (
                 </div>
 
             </Text>
+
         </Content>
     </Wrapper>
 );
