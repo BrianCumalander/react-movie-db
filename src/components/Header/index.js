@@ -1,9 +1,9 @@
-import React from 'react'; //makes sure that we're using Ract for this component
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import RMDBLogo from '../../images/react-movie-logo.svg';
 import TMDBLogo from '../../images/tmdb_logo.svg';
- // Styles
+// Styles
 import { Wrapper, Content, LogoImg, TMDBLogoImg } from './Header.styles';
 
 //you can either export it here, or down below. We'll be exporting below.
@@ -12,11 +12,13 @@ const Header = () => (
     <Wrapper>
         <Content>
             <Link to='/'>
-            <LogoImg src={RMDBLogo} alt='rmdb-logo' />
+                <LogoImg src={RMDBLogo} alt='rmdb-logo' />
             </Link>
             <TMDBLogoImg src={TMDBLogo} alt='tmdb-logo' />
         </Content>
     </Wrapper>
 );
+
+
 
 export default Header;

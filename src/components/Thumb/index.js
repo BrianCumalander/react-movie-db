@@ -1,6 +1,7 @@
 //first import React from react
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 // Styles
 //We're going to import some more things so that the thumbnails are clickable, but thats after we've setup routing 
 // and our different routes
@@ -28,5 +29,11 @@ const Thumb = ({ image, movieId, clickable }) => (
         }
     </div>
 );
+
+Thumb.propTypes = {
+    image: PropTypes.string,
+    movieId: PropTypes.number,
+    clickable: PropTypes.bool
+}
 
 export default Thumb;

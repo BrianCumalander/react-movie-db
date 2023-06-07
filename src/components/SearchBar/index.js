@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import PropTypes from 'prop-types';
 
 // Image
 import searchIcon from '../../images/search-icon.svg';
@@ -41,5 +42,14 @@ const SearchBar = ({ setSearchTerm }) => {
         </Wrapper>
     )
 };
+
+SearchBar.propTypes = {
+    callback: PropTypes.func
+}
+
+// I dono't know why these constants weren't type-checked but the func is???
+//     SearchBar: PropTypes.string,
+//     timer: PropTypes.number
+// }
 
 export default SearchBar;

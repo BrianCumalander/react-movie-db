@@ -13,6 +13,7 @@ import MovieInfoBar from './MovieInfoBar/MovieInfoBar';
 import Actor from './Actor';
 
 
+
 // Hook
 import { useMovieFetch } from '../hooks/useMovieFetch';
 
