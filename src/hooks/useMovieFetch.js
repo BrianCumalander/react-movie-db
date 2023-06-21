@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 // API
 import API from '../API';
+import { isPersistedState } from '../helpers';
 
 // create the actual hook. using a perameter, movieId 
 export const useMovieFetch = movieId => {
@@ -36,14 +37,21 @@ export const useMovieFetch = movieId => {
             }
         };
 
+        const sessionState = isPersistedState(movieId);
+
+        if (sessionState) {
+            setState(sessionState);
+            setLoading(false);
+            return;
+        }
+
         fetchMovie();
-        }, [movieId]);
+    }, [movieId]);
 
-    //     useEffect(() => {
-    //         fetchMovie();
-    //     }, [movieId, fetchMovie]);
-    // })
-
+    // Write to sessionStorage
+    useEffect(() => {
+        sessionStorage.setItem(movieId, JSON.stringify(state));
+    }, [movieId, state]);
 
     return { state, loading, error };
 };

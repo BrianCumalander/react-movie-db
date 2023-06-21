@@ -61,6 +61,26 @@ export const useHomeFetch = () => {
 
 
 
+    //     // Load More
+    //     useEffect(() => {
+    //         if (!isLoadingMore) return;
+
+    //         fetchMovies(state.page + 1, searchTerm);
+    //         setIsLoadingMore(false);
+    //     }, [isLoadingMore, searchTerm, state.page]);
+
+
+    //     // Write to sessionStorage
+    //     // something is creating an error
+    //     useEffect(() => {
+    //         if (!searchTerm) sessionStorage.setItem('homeState', JSON.stringify(state));
+    //     }, [searchTerm, state])
+
+
+    //     return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore };
+    // };
+
+
     // Load More
     useEffect(() => {
         if (!isLoadingMore) return;
@@ -69,13 +89,10 @@ export const useHomeFetch = () => {
         setIsLoadingMore(false);
     }, [isLoadingMore, searchTerm, state.page]);
 
-
     // Write to sessionStorage
-    // something is creating an error
     useEffect(() => {
-        if (!searchTerm) sessionStorage.setItem('homeState', JSON.stringify(state))
-    }, [searchTerm, state])
-
+        if (!searchTerm) sessionStorage.setItem('homeState', JSON.stringify(state));
+    }, [searchTerm, state]);
 
     return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore };
 };
