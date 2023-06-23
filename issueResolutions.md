@@ -12,8 +12,7 @@ So happy to see it. Learned my lesson, really need to be careful where I put my 
 
 ######
 
-My original code was to display a movie vote average in MovieInfo, which gave me 0.00, but it was too
-big for the circle that I was putting it in. 
+My original code was to display a movie vote average in MovieInfo, which gave me 0.00, but it was too big for the circle that I was putting it in. 
 I googled, js two to one decimal
 
 Grepper returned some great results. Take this example:
@@ -27,4 +26,16 @@ My original code which was returning 7.75:
 
 ######
 
+The 'Load More' button didn't work initially. I dove back in to the code, found that 
+in my Components>Button>index.js file, I had defined the on click as
+ <Wrapper type='button' onclick={callback}>
 
+The code helper displayed: (property) onclick: any
+I changed onclick to onClick:
+<Wrapper type='button' onclick={callback}>
+
+Now the code helper shows that it is now connected to React:
+(property) onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
+
+Ran npm start, tested in the browser, and now the button loads more results as expected.
+######
