@@ -24,3 +24,7 @@ export const isPersistedState = stateName => {
   return sessionState && JSON.parse(sessionState);
 };
 
+//formattedDate for year released, in the movies page
+export const formattedDate = formatted => {
+  let formattedDate = {movie.release_date}.slice(0,6)
+};
