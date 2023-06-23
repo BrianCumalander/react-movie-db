@@ -33,5 +33,5 @@ export const isPersistedState = stateName => {
 
 //formattedDate for year released, in the movies page
 export const formattedDate = formatted => {
-  let formattedDate = {movie.release_date}.slice(0,6)
+  let formattedDate = movie.release_date.slice(5);
 };
