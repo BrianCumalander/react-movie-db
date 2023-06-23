@@ -2,7 +2,8 @@ Following tutorial React JS Course for Beginners - 2021 Tutorial
  https://www.youtube.com/watch?v=nTeuhbP7wdE
 
 Resources:
-All data comes from the https://www.themoviedb.org API (https://developer.themoviedb.org/docs).
+GitHub https://github.com/weibenfalk/react-rmdb-v3-starter-files
+All API data comes from the https://www.themoviedb.org /API (https://developer.themoviedb.org/docs).
 
 Youtube tutorial index:
 This is a full premium course. Learn React.js from the ground up with fundamentals to more intermediate and advanced topics. You will learn by building a real app
