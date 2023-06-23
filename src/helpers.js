@@ -1,3 +1,10 @@
+import React from "react";
+import PropTypes from 'prop-types';
+
+// Config
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
+
+
 // Convert time to hours and minutes
 export const calcTime = time => {
   const hours = Math.floor(time / 60);
