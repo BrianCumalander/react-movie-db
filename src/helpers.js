@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from 'prop-types';
+// import React from "react";
+// import PropTypes from 'prop-types';
 
 // Config
-import { IMAGE_BASE_URL, POSTER_SIZE } from "../../config";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../src/config";
 
 
 // Convert time to hours and minutes
@@ -21,17 +21,7 @@ export const convertMoney = money => {
   return formatter.format(money);
 };
 
-// export const isPersistedState = stateName => {
-//   const sessionState = sessionStorage.getItem(stateName);
-//   return sessionState && JSON.parse(sessionState);
-// };
-
 export const isPersistedState = stateName => {
   const sessionState = sessionStorage.getItem(stateName);
   return sessionState && JSON.parse(sessionState);
-};
-
-//formattedDate for year released, in the movies page
-export const formattedDate = formatted => {
-  let formattedDate = movie.release_date.slice(5);
 };

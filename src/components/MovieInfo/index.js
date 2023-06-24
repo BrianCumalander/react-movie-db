@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 // Components
 import Thumb from '../Thumb';
@@ -9,12 +9,16 @@ import NoImage from '../../images/no_image.jpg';
 // Styles
 import { Wrapper, Content, Text } from "./MovieInfo.styles";
 // Chopped Date
-import { formattedDate } from '../..helpers';
+//import { formattedDate } from '../..helpers';
+
+
+
+
 
 //passing in the movie data, then creating an implicit return
 //Wrapper has a prop of backdrop, then we give it the movie.path for whatever movie this index.js will be used for.
 const MovieInfo = ({ movie }) => (
-   
+
     <Wrapper backdrop={movie.backdrop_path}>
         <Content>
             <Thumb
@@ -26,7 +30,7 @@ const MovieInfo = ({ movie }) => (
                 clickable={false}
             />
             <Text>
-                <h1>{movie.title} {formattedDate}</h1>
+                <h1>{movie.title} ({(movie.release_date).slice(0, -6)})</h1>
                 <h3>PLOT</h3>
                 <p>{movie.overview}</p>
 
