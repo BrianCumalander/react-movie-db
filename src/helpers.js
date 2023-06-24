@@ -2,7 +2,7 @@
 // import PropTypes from 'prop-types';
 
 // Config
-import { IMAGE_BASE_URL, POSTER_SIZE } from "../src/config";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "./config";
 
 
 // Convert time to hours and minutes
