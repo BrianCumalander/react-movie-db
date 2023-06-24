@@ -1,3 +1,10 @@
+// import React from "react";
+// import PropTypes from 'prop-types';
+
+// Config
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../src/config";
+
+
 // Convert time to hours and minutes
 export const calcTime = time => {
   const hours = Math.floor(time / 60);
@@ -14,13 +21,7 @@ export const convertMoney = money => {
   return formatter.format(money);
 };
 
-// export const isPersistedState = stateName => {
-//   const sessionState = sessionStorage.getItem(stateName);
-//   return sessionState && JSON.parse(sessionState);
-// };
-
 export const isPersistedState = stateName => {
   const sessionState = sessionStorage.getItem(stateName);
   return sessionState && JSON.parse(sessionState);
 };
-
