@@ -11,7 +11,7 @@ import { Image } from './Thumb.styles';
 //import { useHomeFetch } from '../../hooks/useHomeFetch';
 
 // Image
-import NoImage from '../../images/no_image.jpg';
+//import NoImage from '../../images/no_image.jpg';
 
 
 

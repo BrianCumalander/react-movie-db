@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { IMAGE_BASE_URL, BACKDROP_SIZE } from '../../Config';
 
 export const Wrapper = styled.div`
