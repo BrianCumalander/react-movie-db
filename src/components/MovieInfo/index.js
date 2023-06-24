@@ -8,10 +8,6 @@ import { IMAGE_BASE_URL, POSTER_SIZE } from "../../Config";
 import NoImage from '../../images/no_image.jpg';
 // Styles
 import { Wrapper, Content, Text } from "./MovieInfo.styles";
-// Chopped Date
-//import { formattedDate } from '../..helpers';
-
-
 
 
 
@@ -33,7 +29,6 @@ const MovieInfo = ({ movie }) => (
                 <h1>{movie.title} ({(movie.release_date).slice(0, -6)})</h1>
                 <h3>PLOT</h3>
                 <p>{movie.overview}</p>
-
                 <div className="rating-directors">
                     <div>
                         <h3>RATING</h3>
