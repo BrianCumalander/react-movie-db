@@ -32,10 +32,22 @@ in my Components>Button>index.js file, I had defined the on click as
 
 The code helper displayed: (property) onclick: any
 I changed onclick to onClick:
-<Wrapper type='button' onclick={callback}>
+<Wrapper type='button' onClick={callback}>
 
 Now the code helper shows that it is now connected to React:
 (property) onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 
 Ran npm start, tested in the browser, and now the button loads more results as expected.
+
 ######
+
+Wanted to add the 'year released' to the movie info page for each movie.
+'.release_date' was avalible, but returned in year-day-month format.
+used the .slice tool to drop off the remaining characters.
+used: 
+{movie.title} ({(movie.release_date).slice(0, -6)});
+results:
+The Titan (2018)
+
+######
+
