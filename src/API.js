@@ -6,7 +6,7 @@ import {
   REQUEST_TOKEN_URL,
   LOGIN_URL,
   SESSION_ID_URL
-} from './config';
+} from './Config';
 
 const defaultConfig = {
   method: 'POST',
@@ -18,7 +18,7 @@ const defaultConfig = {
 const apiSettings = {
   fetchMovies: async (searchTerm, page) => {
     const endpoint = searchTerm
-    // if true, will call the ?, but if false, will return the :
+      // if true, will call the ?, but if false, will return the :
       ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
       : `${POPULAR_BASE_URL}&page=${page}`;
     return await (await fetch(endpoint)).json(); // 2 awaits: the first waits for the endpoint, then the second waits for the conversion to .json to complete
