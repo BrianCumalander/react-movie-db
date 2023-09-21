@@ -24,7 +24,7 @@ export const useHomeFetch = () => {
     const [error, setError] = useState(false);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-    // creating our new function for the react useEffect
+     <!-- creating our new function for the react useEffect -->
     const fetchMovies = async (page, searchTerm = "") => { // 2 params, set searchTerm to an empty string
         try {
             setError(false);// set setError state to false, but if it fails, it will jump to the catch.
