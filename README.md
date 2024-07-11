@@ -1,4 +1,4 @@
-# Visit the live version: [React Movie DB](https://briancumalander-movieapp.netlify.app/)
+# Visit the live version: [React Movie DB](https://briancumalander-react-movie-db.netlify.app/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
